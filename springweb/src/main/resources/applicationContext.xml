@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 指定包，spring可以将包与子包下面的所有的有创建注解的类扫进来
+    @Service
+    @Controller
+    @Repository
+    我们需要的做的是，在指定的成中变量上面加@Autowire
+    -->
+    <context:component-scan base-package="com.lgl"/>
+<!--    DriverManagerDataSource dataSource =  new DriverManagerDataSource();-->
+<!--    dataSource.setUrl("jdbc:mysql://localhost:3306/springjdbc");-->
+<!--    dataSource.setUsername("root");-->
+<!--    dataSource.setPassword("123456");-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+         <property name="url" value="jdbc:mysql://localhost:3306/springjdbc"/>
+         <property name="username" value="root"/>
+         <property name="password" value="root"/>
+    </bean>
+<!--    //JdbcTemplate对象  update 增删改-->
+<!--    JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);//参 数据源连接池-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>

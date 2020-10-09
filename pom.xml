@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>springioc</module>
+      <module>springweb</module>
   </modules>
 
   <name>springcode</name>
